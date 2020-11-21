@@ -80,4 +80,4 @@ def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path
 
 
 if __name__ == "__main__":
-    train(batch_size=64, class_nums=10, growth_rate=12, weight_decay=1e-4, depth=40)
+    train(batch_size=64, class_nums=10, growth_rate=12, weight_decay=1e-4, depth=40, train_epoch=5)
