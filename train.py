@@ -51,6 +51,7 @@ def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path
     test_acc_list = []
     saver = tf.train.Saver()
     # saver.restore(sess, "./save_para//.\\densenet.ckpt")
+    saver.restore(sess, "./save_para/densenet.ckpt")
     for epoch in range(train_epoch):
         if epoch == train_epoch // 2 or epoch == train_epoch * 3 // 4:
             lr /= 10
@@ -72,12 +73,13 @@ def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path
                     np.savetxt("loss.txt", loss_list)
                     np.savetxt("train_acc.txt", train_acc_list)
                     np.savetxt("test_acc.txt", test_acc_list)
-            vali_acc = validation_acc(inputs, labels, train_phase, accuracy, sess, valid_path)
-            test_acc_list.append(vali_acc)
-            print("Validation Accuracy: %f"%(vali_acc))
-            saver.save(sess, "./save_para//densenet.ckpt")
+            if ((epoch + 1) % 10) == 0:
+                vali_acc = validation_acc(inputs, labels, train_phase, accuracy, sess, valid_path)
+                test_acc_list.append(vali_acc)
+                print("Validation Accuracy: %f"%(vali_acc))
+                saver.save(sess, "./save_para/densenet.ckpt")
 
 
 
-if __name__ == "__main__":
-    train(batch_size=64, class_nums=10, growth_rate=12, weight_decay=1e-4, depth=40, train_epoch=5)
+# if __name__ == "__main__":
+#     train(batch_size=64, class_nums=10, growth_rate=12, weight_decay=1e-4, depth=40, train_epoch=5)

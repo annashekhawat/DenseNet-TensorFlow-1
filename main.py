@@ -13,7 +13,7 @@ if __name__ == "__main__":
     parser.add_argument("--weight_decay", type=float, default=1e-4)
     parser.add_argument("--cifar10_path", type=str, default="./cifar-10-batches-mat/")
     parser.add_argument("--class_nums", type=int, default=10)
-    parser.add_argument("--epoch", type=int, default=10)
+    parser.add_argument("--epoch", type=int, default=100)
     parser.add_argument("--is_trained", type=bool, default=False)
 
     args = parser.parse_args()
