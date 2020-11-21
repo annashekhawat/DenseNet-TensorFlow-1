@@ -73,7 +73,7 @@ def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path
                     np.savetxt("loss.txt", loss_list)
                     np.savetxt("train_acc.txt", train_acc_list)
                     np.savetxt("test_acc.txt", test_acc_list)
-            if ((epoch + 1) % 10) == 0:
+            if ((epoch) % 1) == 0:
                 vali_acc = validation_acc(inputs, labels, train_phase, accuracy, sess, valid_path)
                 test_acc_list.append(vali_acc)
                 print("Validation Accuracy: %f"%(vali_acc))
