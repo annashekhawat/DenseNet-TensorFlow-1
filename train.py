@@ -14,7 +14,7 @@ def test_acc(path, class_nums, growth_rate, depth):
     sess = tf.Session()
     sess.run(tf.global_variables_initializer())
     saver = tf.train.Saver()
-    saver.restore(sess, "./save_para//.\\densenet.ckpt")
+    saver.restore(sess, "./save_para/densenet.ckpt")
     data, labels_ = read_cifar_data(path)
     acc = 0
     for i in range(data.shape[0] // 100):
