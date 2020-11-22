@@ -9,7 +9,7 @@ if __name__ == "__main__":
     parser.add_argument("--depth", type=int, default=40)
     parser.add_argument("--growth_rate", type=int, default=12)
     parser.add_argument("--batch_size", type=int, default=64)
-    parser.add_argument("--learning_rate", type=float, default=0.1)
+    parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--weight_decay", type=float, default=1e-4)
     parser.add_argument("--cifar10_path", type=str, default="./cifar-10-batches-mat/")
     parser.add_argument("--class_nums", type=int, default=10)
@@ -22,4 +22,4 @@ if __name__ == "__main__":
         acc = test_acc(path=args.cifar10_path+"test_batch", class_nums=args.class_nums, growth_rate=args.growth_rate, depth=args.depth)
         print("Test accuracy: %f"%(acc))
     else:
-        train(batch_size=args.batch_size, class_nums=args.class_nums, growth_rate=args.growth_rate, weight_decay=args.weight_decay, depth=args.depth, cifar10_path=args.cifar10_path, train_epoch=args.epoch)
+        train(batch_size=args.batch_size, class_nums=args.class_nums, growth_rate=args.growth_rate, weight_decay=args.weight_decay, depth=args.depth, cifar10_path=args.cifar10_path, train_epoch=args.epoch, lr=args.lr)

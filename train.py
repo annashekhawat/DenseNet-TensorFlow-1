@@ -29,7 +29,7 @@ def validation_acc(inputs_ph, labels_ph, train_phase_ph, accuracy, sess, path):
         acc += sess.run(accuracy, feed_dict={inputs_ph: data[i * 100:i*100 + 100], labels_ph: labels_[i * 100:i*100 + 100], train_phase_ph: False})
     return acc / (data.shape[0] // 100)
 
-def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path, train_epoch):
+def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path, train_epoch, lr):
     inputs = tf.placeholder(tf.float32, [None, 32, 32, 3])
     labels = tf.placeholder(tf.int64, [None])
     train_phase = tf.placeholder(tf.bool)
@@ -45,7 +45,6 @@ def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path
     sess.run(tf.global_variables_initializer())
     path = cifar10_path + "data_batch_"
     valid_path = cifar10_path + "data_batch_5"
-    lr = 0.1
     loss_list = []
     train_acc_list = []
     test_acc_list = []
