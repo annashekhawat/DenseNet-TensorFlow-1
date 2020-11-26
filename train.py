@@ -50,7 +50,7 @@ def train(batch_size, class_nums, growth_rate, weight_decay, depth, cifar10_path
     test_acc_list = []
     saver = tf.train.Saver()
     # saver.restore(sess, "./save_para//.\\densenet.ckpt")
-    saver.restore(sess, "./save_para/densenet.ckpt")
+    # saver.restore(sess, "./save_para/densenet.ckpt")
     for epoch in range(train_epoch):
         if epoch == train_epoch // 2 or epoch == train_epoch * 3 // 4:
             lr /= 10
